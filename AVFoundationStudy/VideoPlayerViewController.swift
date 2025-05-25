@@ -36,7 +36,6 @@ class VideoPlayerViewController: UIViewController {
         // AVPlayerItem은 m3u8 파일을 자동으로 파싱하고 적절한 비디오 스트림을 선택함.
         let playerItem = AVPlayerItem(url: url)
         
-
         // 3. AVPlayer 생성 및 AVPlayerItem 할당
         player = AVPlayer(playerItem: playerItem)
 
@@ -141,20 +140,3 @@ class VideoPlayerViewController: UIViewController {
         player?.currentItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty))
     }
 }
-
-/*
-[
-    <
-     AVPlayerItemTrack: 0x101aacd80,
-     assetTrack = <AVAssetTrack: 0x101aacdd0, trackID = 1, mediaType = vide>
-     >,
-     <
-     AVPlayerItemTrack: 0x101aacd50,
-     assetTrack = <AVAssetTrack: 0x101aacdb0, trackID = 2, mediaType = soun>
-     >,
-     <
-     AVPlayerItemTrack: 0x101aac960,
-     assetTrack = <AVAssetTrack: 0x101aacd90, trackID = 3, mediaType = clcp>
-     >
-]
- */
