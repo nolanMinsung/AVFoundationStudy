@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+import SnapKit
 
 final class VideoPlayerView: UIView {
     
@@ -17,6 +17,10 @@ final class VideoPlayerView: UIView {
         super.init(frame: frame)
         
         addSubview(playingView)
+        playingView.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(300)
+        }
     }
     
     required init?(coder: NSCoder) {
