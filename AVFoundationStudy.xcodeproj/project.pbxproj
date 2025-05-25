@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4EFA9B4A2DE351A6002A01E9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4EFA9B492DE351A6002A01E9 /* SnapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4EFA9AEF2DE33AF1002A01E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EFA9B4A2DE351A6002A01E9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = AVFoundationStudy;
 			packageProductDependencies = (
+				4EFA9B492DE351A6002A01E9 /* SnapKit */,
 			);
 			productName = AVFoundationStudy;
 			productReference = 4EFA9AD82DE33AEF002A01E9 /* AVFoundationStudy.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = 4EFA9ACF2DE33AEF002A01E9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4EFA9B482DE351A6002A01E9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4EFA9AD92DE33AEF002A01E9 /* Products */;
 			projectDirPath = "";
@@ -567,6 +576,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4EFA9B482DE351A6002A01E9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4EFA9B492DE351A6002A01E9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EFA9B482DE351A6002A01E9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4EFA9AD02DE33AEF002A01E9 /* Project object */;
 }
