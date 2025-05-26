@@ -12,6 +12,12 @@ class VideoPlayerViewController: UIViewController {
 
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
+    
+    let rootView = VideoPlayerView()
+    
+    override func loadView() {
+        view = rootView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,27 +41,28 @@ class VideoPlayerViewController: UIViewController {
         // 2. AVPlayerItem 생성
         // AVPlayerItem은 m3u8 파일을 자동으로 파싱하고 적절한 비디오 스트림을 선택함.
         let playerItem = AVPlayerItem(url: url)
+        rootView.playingView.addNewPlayer(with: playerItem)
         
         // 3. AVPlayer 생성 및 AVPlayerItem 할당
-        player = AVPlayer(playerItem: playerItem)
+//        player = AVPlayer(playerItem: playerItem)
 
         // 4. AVPlayerLayer 생성 및 AVPlayer 할당
-        playerLayer = AVPlayerLayer(player: player)
+//        playerLayer = AVPlayerLayer(player: player)
         
         // playerLayer의 비율 조정
-        playerLayer?.videoGravity = .resizeAspect
+//        playerLayer?.videoGravity = .resizeAspect
 
         // 5. playerLayer를 뷰의 레이어에 추가
-        if let playerLayer = playerLayer {
-            view.layer.addSublayer(playerLayer)
-        }
+//        if let playerLayer = playerLayer {
+//            view.layer.addSublayer(playerLayer)
+//        }
         
         // 6. 플레이어 상태 변화 감지
         // 예를 들어, 재생 준비가 완료되었을 때 자동으로 재생 시작.
         addPlayerItemObservers(playerItem: playerItem)
 
         // 7. 재생 시작
-        player?.play()
+//        player?.play()
     }
     
     private func addPlayerItemObservers(playerItem: AVPlayerItem) {
@@ -102,7 +109,8 @@ class VideoPlayerViewController: UIViewController {
             case .readyToPlay:
                 print("AVPlayerItem status: readyToPlay - 비디오 재생 준비 완료")
                 print("AVPlayerItem duration: \(playerItem.duration)")
-                print("playerItem.tracks: \(playerItem.tracks)")
+//                print("playerItem.tracks: \(playerItem.tracks)")
+                print("AVPlayerItem 재생")
             case .failed:
                 print("AVPlayerItem status: failed - 비디오 재생 실패. Error: \(playerItem.error?.localizedDescription ?? "Unknown error")")
             case .unknown:
@@ -132,11 +140,4 @@ class VideoPlayerViewController: UIViewController {
         // 재생 완료 후 처리할 로직 추가
     }
 
-    deinit {
-        // 옵저버 해제 (메모리 누수 방지)
-        NotificationCenter.default.removeObserver(self)
-        player?.currentItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
-        player?.currentItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp))
-        player?.currentItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty))
-    }
 }

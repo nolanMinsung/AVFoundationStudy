@@ -11,15 +11,16 @@ import SnapKit
 
 final class VideoPlayerView: UIView {
     
-    let playingView = VideoPlayingView()
+    let playingView = VideoPlayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor  = .gray
         addSubview(playingView)
         playingView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(300)
+            make.height.equalTo(playingView.snp.width).multipliedBy(9.0/16.0)
         }
     }
     
