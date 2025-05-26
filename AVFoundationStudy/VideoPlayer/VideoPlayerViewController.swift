@@ -51,7 +51,7 @@ class VideoPlayerViewController: UIViewController {
         // AVPlayerItem 생성
         // AVPlayerItem은 m3u8 파일을 자동으로 파싱하고 적절한 비디오 스트림을 선택함.
         let playerItem = AVPlayerItem(url: url)
-        rootView.playingView.addNewPlayer(with: playerItem)
+        rootView.videoPlayer.addNewPlayer(with: playerItem)
         
         // 플레이어 상태 변화 감지
         // 예를 들어, 재생 준비가 완료되었을 때 자동으로 재생 시작.

@@ -15,15 +15,15 @@ final class VideoPlayerView: UIView {
     // 영상이 화면을 가득 채우고 있는지 여부를 나타내는 custom flag.
     private var isFullScreen: Bool = false
     
-    let playingView = VideoPlayer()
+    let videoPlayer = VideoPlayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor  = .gray
-        addSubview(playingView)
+        addSubview(videoPlayer)
         applyPortraitConstraints()
-        playingView.fullScreenButton.addTarget(self, action: #selector(fullScreenButtonDidTap), for: .touchUpInside)
+        videoPlayer.fullScreenButton.addTarget(self, action: #selector(fullScreenButtonDidTap), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -37,15 +37,15 @@ final class VideoPlayerView: UIView {
 extension VideoPlayerView {
     
     func applyPortraitConstraints() {
-        playingView.snp.remakeConstraints { make in
+        videoPlayer.snp.remakeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(playingView.snp.width).multipliedBy(9.0/16.0)
+            make.height.equalTo(videoPlayer.snp.width).multipliedBy(9.0/16.0)
         }
         isFullScreen = false
     }
     
     func applyLandscapeConstraints() {
-        playingView.snp.remakeConstraints { make in
+        videoPlayer.snp.remakeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.bottom.equalToSuperview()
         }
@@ -59,13 +59,13 @@ private extension VideoPlayerView {
     
     @objc func fullScreenButtonDidTap() {
         if isFullScreen {
-            playingView.fullScreenButton.setImage(
+            videoPlayer.fullScreenButton.setImage(
                 .init(systemName: "arrow.down.left.and.arrow.up.right"),
                 for: .normal
             )
             rotate(to: .portrait)
         } else {
-            playingView.fullScreenButton.setImage(
+            videoPlayer.fullScreenButton.setImage(
                 .init(systemName: "arrow.up.right.and.arrow.down.left"),
                 for: .normal
             )
